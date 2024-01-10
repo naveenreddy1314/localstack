@@ -9,6 +9,7 @@ pip install "boto3-stubs[application-autoscaling]"
 """
 if TYPE_CHECKING:
     from mypy_boto3_acm import ACMClient
+    from mypy_boto3_acm_pca import ACMPCAClient
     from mypy_boto3_amplify import AmplifyClient
     from mypy_boto3_apigateway import APIGatewayClient
     from mypy_boto3_apigatewayv2 import ApiGatewayV2Client
@@ -50,6 +51,7 @@ if TYPE_CHECKING:
     from mypy_boto3_glacier import GlacierClient
     from mypy_boto3_glue import GlueClient
     from mypy_boto3_iam import IAMClient
+    from mypy_boto3_identitystore import IdentityStoreClient
     from mypy_boto3_iot import IoTClient
     from mypy_boto3_iot_data import IoTDataPlaneClient
     from mypy_boto3_iotanalytics import IoTAnalyticsClient
@@ -62,6 +64,7 @@ if TYPE_CHECKING:
     from mypy_boto3_lakeformation import LakeFormationClient
     from mypy_boto3_lambda import LambdaClient
     from mypy_boto3_logs import CloudWatchLogsClient
+    from mypy_boto3_managedblockchain import ManagedBlockchainClient
     from mypy_boto3_mediaconvert import MediaConvertClient
     from mypy_boto3_mediastore import MediaStoreClient
     from mypy_boto3_mq import MQClient
@@ -98,6 +101,7 @@ if TYPE_CHECKING:
     from mypy_boto3_timestream_query import TimestreamQueryClient
     from mypy_boto3_timestream_write import TimestreamWriteClient
     from mypy_boto3_transcribe import TranscribeServiceClient
+    from mypy_boto3_wafv2 import WAFV2Client
     from mypy_boto3_xray import XRayClient
 
     from localstack.aws.connect import MetadataRequestInjector
@@ -105,6 +109,7 @@ if TYPE_CHECKING:
 
 class TypedServiceClientFactory(abc.ABC):
     acm: Union["ACMClient", "MetadataRequestInjector[ACMClient]"]
+    acm_pca: Union["ACMPCAClient", "MetadataRequestInjector[ACMPCAClient]"]
     amplify: Union["AmplifyClient", "MetadataRequestInjector[AmplifyClient]"]
     apigateway: Union["APIGatewayClient", "MetadataRequestInjector[APIGatewayClient]"]
     apigatewayv2: Union["ApiGatewayV2Client", "MetadataRequestInjector[ApiGatewayV2Client]"]
@@ -161,6 +166,7 @@ class TypedServiceClientFactory(abc.ABC):
     glacier: Union["GlacierClient", "MetadataRequestInjector[GlacierClient]"]
     glue: Union["GlueClient", "MetadataRequestInjector[GlueClient]"]
     iam: Union["IAMClient", "MetadataRequestInjector[IAMClient]"]
+    identitystore: Union["IdentityStoreClient", "MetadataRequestInjector[IdentityStoreClient]"]
     iot: Union["IoTClient", "MetadataRequestInjector[IoTClient]"]
     iot_data: Union["IoTDataPlaneClient", "MetadataRequestInjector[IoTDataPlaneClient]"]
     iotanalytics: Union["IoTAnalyticsClient", "MetadataRequestInjector[IoTAnalyticsClient]"]
@@ -177,6 +183,9 @@ class TypedServiceClientFactory(abc.ABC):
     lakeformation: Union["LakeFormationClient", "MetadataRequestInjector[LakeFormationClient]"]
     lambda_: Union["LambdaClient", "MetadataRequestInjector[LambdaClient]"]
     logs: Union["CloudWatchLogsClient", "MetadataRequestInjector[CloudWatchLogsClient]"]
+    managedblockchain: Union[
+        "ManagedBlockchainClient", "MetadataRequestInjector[ManagedBlockchainClient]"
+    ]
     mediaconvert: Union["MediaConvertClient", "MetadataRequestInjector[MediaConvertClient]"]
     mediastore: Union["MediaStoreClient", "MetadataRequestInjector[MediaStoreClient]"]
     mq: Union["MQClient", "MetadataRequestInjector[MQClient]"]
@@ -219,6 +228,7 @@ class TypedServiceClientFactory(abc.ABC):
     sesv2: Union["SESV2Client", "MetadataRequestInjector[SESV2Client]"]
     sns: Union["SNSClient", "MetadataRequestInjector[SNSClient]"]
     sqs: Union["SQSClient", "MetadataRequestInjector[SQSClient]"]
+    sqs_json: Union["SQSClient", "MetadataRequestInjector[SQSClient]"]
     ssm: Union["SSMClient", "MetadataRequestInjector[SSMClient]"]
     sso_admin: Union["SSOAdminClient", "MetadataRequestInjector[SSOAdminClient]"]
     stepfunctions: Union["SFNClient", "MetadataRequestInjector[SFNClient]"]
@@ -230,6 +240,7 @@ class TypedServiceClientFactory(abc.ABC):
         "TimestreamWriteClient", "MetadataRequestInjector[TimestreamWriteClient]"
     ]
     transcribe: Union["TranscribeServiceClient", "MetadataRequestInjector[TranscribeServiceClient]"]
+    wafv2: Union["WAFV2Client", "MetadataRequestInjector[WAFV2Client]"]
     xray: Union["XRayClient", "MetadataRequestInjector[XRayClient]"]
 
 
