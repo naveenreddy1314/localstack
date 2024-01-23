@@ -144,23 +144,18 @@ class TestOpensearchProvider:
         assert len(compatible_versions) >= 20
         expected_compatible_versions = [
             {
-                "SourceVersion": "OpenSearch_2.10",
+                "SourceVersion": "OpenSearch_2.9",
                 "TargetVersions": ["OpenSearch_2.11"],
             },
             {
-                "SourceVersion": "OpenSearch_2.9",
-                "TargetVersions": ["OpenSearch_2.10", "OpenSearch_2.11"],
-            },
-            {
                 "SourceVersion": "OpenSearch_2.7",
-                "TargetVersions": ["OpenSearch_2.9", "OpenSearch_2.10", "OpenSearch_2.11"],
+                "TargetVersions": ["OpenSearch_2.9", "OpenSearch_2.11"],
             },
             {
                 "SourceVersion": "OpenSearch_2.5",
                 "TargetVersions": [
                     "OpenSearch_2.7",
                     "OpenSearch_2.9",
-                    "OpenSearch_2.10",
                     "OpenSearch_2.11",
                 ],
             },
@@ -170,7 +165,6 @@ class TestOpensearchProvider:
                     "OpenSearch_2.5",
                     "OpenSearch_2.7",
                     "OpenSearch_2.9",
-                    "OpenSearch_2.10",
                     "OpenSearch_2.11",
                 ],
             },
@@ -193,7 +187,6 @@ class TestOpensearchProvider:
                     "OpenSearch_2.5",
                     "OpenSearch_2.7",
                     "OpenSearch_2.9",
-                    "OpenSearch_2.10",
                     "OpenSearch_2.11",
                 ],
             },
