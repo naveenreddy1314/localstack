@@ -127,6 +127,7 @@ PROVIDER_DEFAULTS = {
     "AWS::ECS::Cluster": "ResourceProvider",
     "AWS::ECS::Service": "ResourceProvider",
     "AWS::ECS::TaskDefinition": "ResourceProvider",
+    "AWS::ECS::CapacityProvider": "ResourceProvider",
     "AWS::ECR::Repository": "ResourceProvider",
     "AWS::EKS::Nodegroup": "ResourceProvider",
     "AWS::ElasticBeanstalk::Application": "ResourceProvider",
