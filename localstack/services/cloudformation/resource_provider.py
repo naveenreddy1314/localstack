@@ -124,6 +124,7 @@ PROVIDER_DEFAULTS = {
     "AWS::EC2::TransitGatewayAttachment": "ResourceProvider",
     "AWS::EC2::VPC": "ResourceProvider",
     "AWS::EC2::VPCGatewayAttachment": "ResourceProvider",
+    "AWS::ECS::Cluster": "ResourceProvider",
     "AWS::ECR::Repository": "ResourceProvider",
     "AWS::EKS::Nodegroup": "ResourceProvider",
     "AWS::ElasticBeanstalk::Application": "ResourceProvider",
