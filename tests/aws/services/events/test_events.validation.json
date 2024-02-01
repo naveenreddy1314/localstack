@@ -1,4 +1,7 @@
 {
+  "tests/aws/services/events/test_events.py::TestEventBridgeInputTransformers::test_put_events_with_input_transformation_to_sqs": {
+    "last_validated_date": "2024-02-01T13:28:20+00:00"
+  },
   "tests/aws/services/events/test_events.py::TestEvents::test_put_events_nonexistent_event_bus": {
     "last_validated_date": "2023-05-05T10:00:22+00:00"
   },
