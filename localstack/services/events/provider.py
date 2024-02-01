@@ -595,10 +595,23 @@ def filter_event_with_target_input_path(target: Dict, event: Dict) -> Dict:
     return event
 
 
+def transform_event_with_input_transformer(target: Dict, event: Dict) -> Dict:
+    input_transformer = target.get("InputTransformer")
+    if input_transformer:
+        input_paths = input_transformer["InputPathsMap"]
+        input_template = input_transformer["InputTemplate"]
+        for key, path in input_paths.items():
+            value = extract_jsonpath(event, path)
+            input_template = input_template.replace(f"<{key}>", value)
+    templated_event = re.sub('"', "", input_template)
+    return templated_event
+
+
 def process_events(event: Dict, targets: list[Dict]):
     for target in targets:
         arn = target["Arn"]
         changed_event = filter_event_with_target_input_path(target, event)
+        changed_event = transform_event_with_input_transformer(target, changed_event)
         if target.get("Input"):
             changed_event = json.loads(target.get("Input"))
         try:
@@ -680,7 +693,6 @@ def events_handler_put_events(self):
                 ).get("Targets", [])
 
                 targets.extend([{"RuleArn": rule.arn} | target for target in rule_targets])
-
         # process event
         process_events(formatted_event, targets)
 
