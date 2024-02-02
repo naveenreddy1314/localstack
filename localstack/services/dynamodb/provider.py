@@ -375,6 +375,7 @@ class DynamoDBDeveloperEndpoints:
     @route("/_aws/dynamodb/expired", methods=["DELETE"])
     def delete_expired_messages(self, _: Request):
         no_expired_items = delete_expired_items()
+        return Response("", 204)
         return {"ExpiredItems": no_expired_items}
 
 
@@ -385,9 +386,11 @@ def delete_expired_items() -> int:
     """
     no_expired_items = 0
     for account_id, region_name, state in dynamodb_stores.iter_stores():
+        LOG.error(f"### {account_id=} {region_name=}")
         ttl_specs = state.ttl_specifications
         client = connect_to(aws_access_key_id=account_id, region_name=region_name).dynamodb
         for table_name, ttl_spec in ttl_specs.items():
+            LOG.error(f"### {table_name=} {ttl_spec=}")
             if ttl_spec.get("Enabled", False):
                 attribute_name = ttl_spec.get("AttributeName")
                 current_time = int(datetime.now().timestamp())
@@ -414,6 +417,7 @@ def delete_expired_items() -> int:
                         table_name,
                         e,
                     )
+    LOG.error(f"### {no_expired_items=}")
     return no_expired_items
 
 
@@ -478,7 +482,7 @@ class DynamoDBProvider(DynamodbApi, ServiceLifecycleHook):
     def on_before_stop(self):
         self._expired_items_worker.stop()
         for rule in self._router_rules:
-            ROUTER.remove_rule(rule)
+            ROUTER.remove(rule)
 
     def accept_state_visitor(self, visitor: StateVisitor):
         visitor.visit(dynamodb_stores)
